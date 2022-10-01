@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddPost</title>
+</head>
+<body>
+<h1>Submit a new post</h1>
+<form th:action="@{/addPost/{id} (id = ${id})}" method="post">
+    <label>title</label>
+    <input type="text" name="title">
+    <label>URL</label>
+    <input type="text" name="url">
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>All Posts</title>
+</head>
+<body>
+<div>
+    <a th:href="@{/addNew/{id} (id = ${id})}">submit new post</a>
+</div>
+<h1>Trending Posts</h1>
+<table>
+    <tr>
+        <th>Popularity</th>
+        <th>Likes</th>
+        <th>Dislikes</th>
+        <th>Post name</th>
+        <th>User</th>
+
+    </tr>
+    <tr th:each="post : ${posts}">
+        <td th:text=" ${post.getCounAllLikesAndDislikes()}"></td>
+        <td>
+            <a th:href="@{/addlike/{id} (id = ${post.getId()})}" th:text="${post.getLikes()}">+</a>
+        </td>
+        <td >
+            <a th:href="@{/addDislike/{id} (id = ${post.getId()})}" th:text="${post.getDisLikes()}" >-</a>
+        </td>
+        <td>
+            <a th:href="${post.getUrl()}" th:text="${post.getNameOfPost()}"></a>
+        </td>
+        <td>
+            <a th:text="${post.getUser().getNameOfUser()}"></a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
